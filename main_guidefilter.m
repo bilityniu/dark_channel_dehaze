@@ -1,6 +1,6 @@
 clc;
 clear all;
-close all;
+%close all;
 
 tic; % 计时开始
 
@@ -10,14 +10,14 @@ t0 = 0.1;
 r = win_size*4;
 eps = 10^-6;
 
-image = double(imread('foggy_bench.jpg'))/255;
+image = double(imread('forest.jpg'))/255;
 figure('name', 'forest.jpg'); imshow(image);
  
 Jdark = get_dark_channel(image, win_size);
 
 Atom  = get_atomsphere(image, Jdark); 
 
-t = 1 - W*Jdark;
+t = 1 - W * get_dark_channel(image ./ Atom, win_size);
 
 trans_est = guidedfilter(double(rgb2gray(image)), t, r, eps);
 figure('name', 't'); imshow(trans_est);

@@ -16,7 +16,7 @@ Jdark = get_dark_channel(image, win_size);
 
 Atom  = get_atomsphere(image, Jdark); 
 
-t = 1 - W*Jdark;
+t = 1 - W * get_dark_channel(image ./ Atom, win_size);
 
 trans_est = softmatting(image, t, l);
 figure('name', 't'); imshow(trans_est);
