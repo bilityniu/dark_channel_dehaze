@@ -5,7 +5,7 @@
 %       omega: a constant parameter W(0<W<=1), keep little haze to make the image more natural.
 %       t0: the low bound of transmission, a typical value is 0.1.
 % output: dehazed image.
-function [result] = DCP_guide(image, win_size, omega, t0)
+function [radiance] = DCP_guide(image, win_size, omega, t0)
 
 if ~exist('win_size', 'var')
     win_size = 15;
@@ -38,6 +38,6 @@ max_trans_est = repmat(max(trans_est, t0), [1, 1, 3]);
 
 % Çó½âÇåÎúÍ¼Ïñ
 % J = (I-A)/max(t,t(0)) + A
-result = ( (image - Atom)./max_trans_est ) + Atom;
+radiance = ( (image - Atom)./max_trans_est ) + Atom;
 
 end
