@@ -29,8 +29,8 @@ Bsum = 0;  Jb = image(:,:,3);
 
 for i = 1 : 1 : select_pixel_num
     Rsum = Rsum + Jr(Max_Pix(i, 1), Max_Pix(i, 2));
-    Gsum = Gsum + Jr(Max_Pix(i, 1), Max_Pix(i, 2));
-    Bsum = Bsum + Jr(Max_Pix(i, 1), Max_Pix(i, 2));
+    Gsum = Gsum + Jg(Max_Pix(i, 1), Max_Pix(i, 2));
+    Bsum = Bsum + Jb(Max_Pix(i, 1), Max_Pix(i, 2));
 end
     
 sum = [Rsum/select_pixel_num, Gsum/select_pixel_num, Bsum/select_pixel_num];
